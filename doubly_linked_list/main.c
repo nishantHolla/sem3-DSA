@@ -70,6 +70,16 @@ int main() {
           printf("%d is deleted\n", element);
         break;
 
+      case 7:
+        printf("Enter element: ");
+        scanf("%d", & element);
+        ec = dll_search_list(&list, element);
+        if (ec)
+          printf("Element found\n");
+        else
+          printf("Element not found\n");
+        break;
+
       case 8:
         dll_display_list(&list);
         break;

@@ -27,6 +27,8 @@ int dll_delete_at(DL_LIST *list, int *container, int index);
 
 int dll_display_list(DL_LIST *list);
 
+int dll_search_list(DL_LIST *list, int element);
+
 int dll_free_list(DL_LIST *list);
 
 #endif // DOUBLY_LINKED_LIST_H_

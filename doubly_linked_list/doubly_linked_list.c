@@ -193,6 +193,21 @@ int dll_display_list(DL_LIST *list) {
   return 0;
 }
 
+int dll_search_list(DL_LIST *list, int element) {
+  if (!list->head)
+    return 0;
+
+  DLL_NODE *t_node = list->head;
+  
+  while (t_node) {
+    if (t_node->data == element)
+      return 1;
+    t_node = t_node->next;
+  }
+
+  return 0;
+}
+
 int dll_free_list(DL_LIST *list) {
   DLL_NODE *t_node = list->head;
 
