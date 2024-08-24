@@ -202,3 +202,36 @@ int sll_free_list(SL_LIST *list) {
   list->size = 0;
   return 0;
 }
+
+// extra
+int sll_reverse_list(SL_LIST *list) {
+  // case 1: list is empty
+  if (list->head == NULL)
+    return 1;
+
+  // case 2: list has only one element
+  if (list->head->next == NULL)
+    return 2;
+
+  // case 3: list has more than one element
+  SLL_NODE *tl_node = NULL;
+  SLL_NODE *tm_node = list->head;
+  SLL_NODE *tr_node = list->head->next;
+
+  while (tm_node) {
+    SLL_NODE *temp;
+    tm_node->next = tl_node;
+
+    if (tr_node) {
+      temp = tr_node->next;
+      tr_node->next = tm_node;
+    }
+
+    tl_node = tm_node;
+    tm_node = tr_node;
+    tr_node = temp;
+  }
+
+  list->head = tl_node;
+  return 0;
+}

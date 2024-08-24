@@ -29,5 +29,8 @@ int sll_display_list(SL_LIST *list);
 
 int sll_free_list(SL_LIST *list);
 
+// extra
+int sll_reverse_list(SL_LIST *list);
+
 
 #endif // SINGLY_LINKED_LIST_H_

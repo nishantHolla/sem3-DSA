@@ -10,7 +10,8 @@ const char *instructions = "\
 6. Delete At\n\
 7. Search list\n\
 8. Display list\n\
-9. Exit";
+9. Reverse list\n\
+10. Exit";
 
 int main() {
   int choice = 1;
@@ -85,6 +86,10 @@ int main() {
         break;
 
       case 9:
+        sll_reverse_list(&list);
+        break;
+
+      case 10:
         choice = 0;
         break;
 
