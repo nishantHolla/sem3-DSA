@@ -36,6 +36,14 @@ int main() {
         csll_insert_back(&list, element);
         break;
 
+      case 3:
+        printf("Enter the element: ");
+        scanf("%d", &element);
+        printf("Enter the index: ");
+        scanf("%d", &index);
+        csll_insert_at(&list, element, index);
+        break;
+
       case 4:
         ec = csll_delete_front(&list, &element);
         if (ec == 0)
@@ -44,6 +52,14 @@ int main() {
 
       case 5:
         ec = csll_delete_back(&list, &element);
+        if (ec == 0)
+          printf("Deleted %d\n", element);
+        break;
+
+      case 6:
+        printf("Enter the index: ");
+        scanf("%d", &index);
+        ec = csll_delete_at(&list, &element, index);
         if (ec == 0)
           printf("Deleted %d\n", element);
         break;

@@ -39,6 +39,41 @@ int csll_insert_front(CSL_LIST *list, int element) {
   return 0;
 }
 
+int csll_insert_at(CSL_LIST *list, int element, int index) {
+  // case 1: index is out of bound
+  if (index < 0 || index > list->size) {
+    return 1;
+  }
+
+  // case 2: inserting at front
+  if (list->tail == NULL || index == 0) {
+    csll_insert_front(list, element);
+    return 0;
+  }
+
+  // case 3: inserting at last
+  if (index == list->size) {
+    csll_insert_back(list, element);
+    return 0;
+  }
+
+  // case 4: inserting in between
+  CSLL_NODE *new_node = csll_create_node(element);
+  int i = 0;
+  CSLL_NODE *t_node = list->tail;
+
+  while (i != index && t_node->next) {
+    t_node = t_node->next;
+    ++i;
+  }
+
+  new_node->next = t_node->next;
+  t_node->next = new_node;
+
+  ++list->size;
+  return 0;
+}
+
 int csll_insert_back(CSL_LIST *list, int element) {
   CSLL_NODE *new_node = csll_create_node(element);
 
@@ -80,6 +115,44 @@ int csll_delete_front(CSL_LIST *list, int *container) {
     free(temp);
   }
 
+  --list->size;
+  return 0;
+}
+
+int csll_delete_at(CSL_LIST *list, int *container, int index) {
+  // case 1: index is out of bound
+  if (index < 0 || index > list->size);
+
+  // case 2: list is empty
+  if (list->tail == NULL)
+    return 1;
+
+  // case 3: deleting first element
+  if (index == 0) {
+    csll_delete_front(list, container);
+    return 0;
+  }
+
+  // case 4: deleting last element
+  if (index == list->size-1) {
+    csll_delete_back(list, container);
+    return 0;
+  }
+
+  // case 5: deleting in between element
+  CSLL_NODE *t_node = list->tail;
+  int i = 0;
+  while (i == index - 1) {
+    t_node = t_node->next;
+    ++i;
+  }
+
+  printf("---%d\n", t_node->data);
+  *container = t_node->next->data;
+  CSLL_NODE *temp = t_node->next;
+  t_node->next = t_node->next->next;
+
+  free(temp);
   --list->size;
   return 0;
 }
