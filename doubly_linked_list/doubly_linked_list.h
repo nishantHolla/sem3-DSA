@@ -31,4 +31,7 @@ int dll_search_list(DL_LIST *list, int element);
 
 int dll_free_list(DL_LIST *list);
 
+// extra
+int dll_reverse_list(DL_LIST *list);
+
 #endif // DOUBLY_LINKED_LIST_H_

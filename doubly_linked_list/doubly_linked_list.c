@@ -221,3 +221,26 @@ int dll_free_list(DL_LIST *list) {
   list->size = 0;
   return 0;
 }
+
+// extra
+int dll_reverse_list(DL_LIST *list) {
+  // case 1: list is empty
+  if (list->head == NULL)
+    return 1;
+  
+  // case 2: list has only one element
+  if (list->head->next == NULL)
+    return 2;
+
+  // case 3: list has more than one element
+  DLL_NODE *l_node = NULL;
+  DLL_NODE *m_node = list->head;
+  DLL_NODE *r_node = list->head->right;
+
+  while (m_node) {
+    DLL_NODE *temp = r_node->next;
+
+    m_node->next = l_node;
+    m_node->prev = r_node;
+  }
+}
